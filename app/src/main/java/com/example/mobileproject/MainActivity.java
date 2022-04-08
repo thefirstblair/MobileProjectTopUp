@@ -19,10 +19,26 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    List<Model> modelList;
+    RecyclerView recyclerView;
+    OrderAdapter mAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        modelList = new ArrayList<>();
+        modelList.add(new Model("$10 Roblox Gift Card", getString(R.string.product1), R.drawable.roblox10giftcard ));
+        modelList.add(new Model("$25 Roblox Gift Card", getString(R.string.product2), R.drawable.roblox25giftcard));
+        modelList.add(new Model("$50 Roblox Gift Card", getString(R.string.product3), R.drawable.roblox50giftcard));
+
+        // recyclerview
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(null));
+        // adapter
+        mAdapter = new OrderAdapter(this, modelList);
+        recyclerView.setAdapter(mAdapter);
     }
 
     @Override

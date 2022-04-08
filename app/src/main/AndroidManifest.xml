@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileProject">
         <activity
+            android:name=".Product2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Product1Activity"
+            android:exported="false" />
+        <activity
             android:name=".TopUpMoney"
             android:exported="false" />
         <activity
