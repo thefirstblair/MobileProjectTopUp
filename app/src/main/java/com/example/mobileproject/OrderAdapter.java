@@ -78,6 +78,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 Intent intent2 = new Intent(context, Product2Activity.class);
                 context.startActivity(intent2);
             }
+
+            if (position == 2) {
+                Intent intent3 = new Intent(context, Product3Activity.class);
+                context.startActivity(intent3);
+            }
         }
     }
 }
