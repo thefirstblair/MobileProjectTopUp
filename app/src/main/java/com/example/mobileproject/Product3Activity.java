@@ -28,18 +28,20 @@ public class Product3Activity extends AppCompatActivity {
 
         productName.setText("$50 Roblox Gift Card");
         productPrice.setText("$50");
-        productDescription.setText(getString(R.string.product3));
+        productDescription.setText(getString(R.string.product3Description));
         imageView.setImageResource(R.drawable.roblox50giftcard);
 
         buyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(InfoActivity.this, SummaryActivity.class);
-//                startActivity(intent);
-//                SaveCart();
+                checkMoney(50);
                 Toast.makeText(Product3Activity.this, "Click Buy!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void checkMoney(int productCost) {
+
 
     }
 }

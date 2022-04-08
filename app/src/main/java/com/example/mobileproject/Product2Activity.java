@@ -28,15 +28,12 @@ public class Product2Activity extends AppCompatActivity {
 
         productName.setText("$25 Roblox Gift Card");
         productPrice.setText("$25");
-        productDescription.setText(getString(R.string.product2));
+        productDescription.setText(getString(R.string.product2Description));
         imageView.setImageResource(R.drawable.roblox25giftcard);
 
         buyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(InfoActivity.this, SummaryActivity.class);
-//                startActivity(intent);
-//                SaveCart();
                 Toast.makeText(Product2Activity.this, "Click Buy!", Toast.LENGTH_SHORT).show();
             }
         });

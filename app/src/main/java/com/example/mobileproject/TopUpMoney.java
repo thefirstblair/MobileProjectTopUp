@@ -73,7 +73,6 @@ public class TopUpMoney extends AppCompatActivity {
             }
         });
 
-        Log.i("Test: ", "Old Money : " + oldMoney);
         // Button
         topUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         modelList = new ArrayList<>();
-        modelList.add(new Model("$10 Roblox Gift Card", getString(R.string.product1), R.drawable.roblox10giftcard ));
-        modelList.add(new Model("$25 Roblox Gift Card", getString(R.string.product2), R.drawable.roblox25giftcard));
-        modelList.add(new Model("$50 Roblox Gift Card", getString(R.string.product3), R.drawable.roblox50giftcard));
+        modelList.add(new Model(getString(R.string.product1Name), getString(R.string.product1Description), R.drawable.roblox10giftcard ));
+        modelList.add(new Model(getString(R.string.product2Name), getString(R.string.product2Description), R.drawable.roblox25giftcard));
+        modelList.add(new Model(getString(R.string.product3Name), getString(R.string.product3Description), R.drawable.roblox50giftcard));
 
         // recyclerview
         recyclerView = findViewById(R.id.recyclerView);
