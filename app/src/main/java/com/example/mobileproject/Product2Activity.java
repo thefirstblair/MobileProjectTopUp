@@ -145,7 +145,7 @@ public class Product2Activity extends AppCompatActivity {
         userProduct.put("userEmail", userEmail);
         userProduct.put("productCode", productCode);
         userProduct.put("productName", getString(R.string.product2Name));
-        userProduct.put("timestamp", formattedDate);
+        userProduct.put("productTime", formattedDate);
 
         documentReference_user.set(userProduct).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
