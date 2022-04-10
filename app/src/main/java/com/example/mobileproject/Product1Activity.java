@@ -24,6 +24,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -38,6 +40,12 @@ public class Product1Activity extends AppCompatActivity {
     FirebaseFirestore fStore;
 
     String userId, userEmail, productCode;
+
+
+    LocalDateTime myDateOj;
+    DateTimeFormatter myFormatObj;
+
+    String formattedDate;
 
     long myMoney;
 
@@ -63,6 +71,11 @@ public class Product1Activity extends AppCompatActivity {
         productDescription.setText(getString(R.string.product1Description));
         imageView.setImageResource(R.drawable.roblox10giftcard);
 
+
+        myDateOj = LocalDateTime.now();
+        myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+        formattedDate = myDateOj.format(myFormatObj);
 
         // Get Balance
         DocumentReference documentReference = fStore.collection("users").document(userId);
@@ -130,6 +143,9 @@ public class Product1Activity extends AppCompatActivity {
         Map<String,Object> userProduct = new HashMap<>();
         userProduct.put("userEmail", userEmail);
         userProduct.put("productCode", productCode);
+        userProduct.put("productName", getString(R.string.product1Name));
+        userProduct.put("timestamp", formattedDate);
+
         documentReference_user.set(userProduct).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {

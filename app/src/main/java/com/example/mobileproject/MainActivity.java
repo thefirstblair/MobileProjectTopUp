@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         modelList.add(new Model(getString(R.string.product3Name), getString(R.string.product3Description), R.drawable.roblox50giftcard));
 
         // recyclerview
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerViewHistory);
         recyclerView.setLayoutManager(new LinearLayoutManager(null));
         // adapter
         mAdapter = new OrderAdapter(this, modelList);
@@ -50,13 +49,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.money)
+        if (id == R.id.history)
         {
-            Toast.makeText(getApplicationContext(), "Click Money", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getApplicationContext(), History.class));
+
         }
         else if (id == R.id.top_up)
         {
-            Toast.makeText(getApplicationContext(), "Click Top up", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getApplicationContext(), TopUpMoney.class));
         }
         else if (id == R.id.data)

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileProject">
         <activity
+            android:name=".History"
+            android:exported="false" />
+        <activity
             android:name=".Summary"
             android:exported="false" />
         <activity
