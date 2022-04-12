@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -96,6 +97,7 @@ public class Product1Activity extends AppCompatActivity {
                     createUserProduct();
                     updateData(10);
                     Toast.makeText(Product1Activity.this, "ซื้อสินค้าเรียบร้อย", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), Summary.class));
                 }
                 else{
                     Toast.makeText(Product1Activity.this, "ไม่สามารถซื้อสินค้าได้ โปรดตรวจสอบยอดเงินอีกครั้ง", Toast.LENGTH_SHORT).show();

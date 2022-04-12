@@ -10,8 +10,10 @@
         android:id="@+id/textViewHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="History"
-        android:textSize="30dp"/>
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/sarabun_bold"
+        android:text="ประวัติการซื้อ"
+        android:textSize="30dp" />
 
     <HorizontalScrollView
         android:layout_width="wrap_content"

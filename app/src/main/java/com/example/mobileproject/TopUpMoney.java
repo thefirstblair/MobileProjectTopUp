@@ -96,7 +96,7 @@ public class TopUpMoney extends AppCompatActivity {
                     return;
                 }
                 if (Integer.parseInt(topUpAmount) <= 0){
-                    editTextTopUpMoney.setError("Minimum 0 baht");
+                    editTextTopUpMoney.setError("Minimum 1 Dollar");
                     return;
                 }
 

@@ -2,6 +2,7 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/sarabun</item>
+        <item>@font/sarabun_bold</item>
         <item>@font/sarabun_light</item>
         <item>@font/sarabun_thin</item>
     </array>

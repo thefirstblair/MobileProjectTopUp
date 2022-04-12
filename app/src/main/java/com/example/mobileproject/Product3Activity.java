@@ -98,6 +98,7 @@ public class Product3Activity extends AppCompatActivity {
                     createProduct();
                     createUserProduct();
                     updateData(50);
+                    Toast.makeText(Product3Activity.this, "ซื้อสินค้าเรียบร้อย", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), Summary.class));
                 }
                 else{
