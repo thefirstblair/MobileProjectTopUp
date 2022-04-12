@@ -31,8 +31,20 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.auth.User;
 
+import org.web3j.crypto.Credentials;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.methods.response.TransactionReceipt;
+import org.web3j.protocol.http.HttpService;
+import org.web3j.tuples.generated.Tuple2;
+import org.web3j.tx.gas.ContractGasProvider;
+import org.web3j.tx.gas.DefaultGasProvider;
+
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
+
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class TopUpMoney extends AppCompatActivity {
 
@@ -51,7 +63,7 @@ public class TopUpMoney extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_up_money);
 
-        money = findViewById(R.id.balance);
+      money = findViewById(R.id.balance);
         editTextTopUpMoney = findViewById(R.id.top_up_money);
         backBtn = findViewById(R.id.backBtn);
         topUpBtn = findViewById(R.id.topUpBtn);
@@ -91,6 +103,8 @@ public class TopUpMoney extends AppCompatActivity {
                 long m2 = Integer.parseInt(topUpAmount);
                 Log.i("Test","เงินทั้งหมด : " + m2);
                 UpdateData(m2);
+                store();
+                retrieve();
             }
         });
 
@@ -102,6 +116,37 @@ public class TopUpMoney extends AppCompatActivity {
         });
     }
 
+    public void store(){
+        Web3j web3 = Web3j.build(new HttpService("https://goerli.infura.io/v3/a87b52058d2545f18ded8f67bf4a588b"));
+        Credentials credentials = Credentials.create("22741da2fe6cc501598e66a258c09d0fb218e73ece9f4cb59111418b3301e0e6");
+        ContractGasProvider contractGasProvider = new DefaultGasProvider();
+        Wrapper a = Wrapper.load("0x2ad55a4EC9487429B712d4eE060637e409aaf484", web3, credentials, contractGasProvider);
+
+        a.store(userEmail,new BigInteger(editTextTopUpMoney.getText().toString())).flowable().subscribeOn(Schedulers.io()).subscribe(new Consumer<TransactionReceipt>() {
+            @Override
+            public void accept(TransactionReceipt transactionReceipt) throws Exception {
+                Log.i("store", "" + userEmail + " + " + editTextTopUpMoney.getText().toString());
+            }
+        });
+    }
+
+    public void retrieve(){
+        final String[] s = new String[1];
+        final String[] cost = new String[1];
+        Web3j web3 = Web3j.build(new HttpService("https://goerli.infura.io/v3/a87b52058d2545f18ded8f67bf4a588b"));
+        Credentials credentials = Credentials.create("22741da2fe6cc501598e66a258c09d0fb218e73ece9f4cb59111418b3301e0e6");
+        ContractGasProvider contractGasProvider = new DefaultGasProvider();
+        Wrapper a = Wrapper.load("0x2ad55a4EC9487429B712d4eE060637e409aaf484", web3, credentials, contractGasProvider);
+
+        a.retrieve().flowable().subscribeOn(Schedulers.io()).subscribe(new Consumer<Tuple2<String, BigInteger>>() {
+            @Override
+            public void accept(Tuple2<String, BigInteger> stringBigIntegerTuple2) throws Exception {
+                s[0] = stringBigIntegerTuple2.component1().toString();
+                cost[0] = stringBigIntegerTuple2.component2().toString();
+                Log.i("retrieve","r: " + s[0] + " , " + cost[0]);
+            }
+        });
+    }
     private void UpdateData(long topUp){
         Map<String, Object> map = new HashMap<>();
         long newMoney = oldMoney + topUp;
