@@ -24,19 +24,14 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.ServerTimestamp;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.time.LocalDateTime; // Import the LocalDateTime class
-import java.time.format.DateTimeFormatter; // Import the DateTimeFormatter class
 
-public class Product3Activity extends AppCompatActivity {
-
+public class Product4Activity extends AppCompatActivity {
     ImageView imageView;
     TextView productName, productPrice, productDescription;
     Button buyBtn;
@@ -46,6 +41,7 @@ public class Product3Activity extends AppCompatActivity {
 
     String userId, userEmail, productCode;
     long myMoney;
+
 
     LocalDateTime myDateOj;
     DateTimeFormatter myFormatObj;
@@ -74,11 +70,10 @@ public class Product3Activity extends AppCompatActivity {
         userId = fAuth.getCurrentUser().getUid();
         userEmail = fAuth.getCurrentUser().getEmail();
 
-        productName.setText(getString(R.string.product3Name));
-        productPrice.setText("$50");
-        productDescription.setText(getString(R.string.product3Description));
-        imageView.setImageResource(R.drawable.roblox50giftcard);
-
+        productName.setText(getString(R.string.product4Name));
+        productPrice.setText("$100");
+        productDescription.setText(getString(R.string.product4Description));
+        imageView.setImageResource(R.drawable.roblox100giftcard);
 
         DocumentReference documentReference = fStore.collection("users").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
@@ -92,21 +87,21 @@ public class Product3Activity extends AppCompatActivity {
         buyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkMoney(50) == true)
+                if (checkMoney(100) == true)
                 {
                     createProduct();
                     createUserProduct();
-                    updateData(50);
-                    Toast.makeText(Product3Activity.this, "ซื้อสินค้าเรียบร้อย", Toast.LENGTH_SHORT).show();
+                    updateData(100);
+                    Toast.makeText(Product4Activity.this, "ซื้อสินค้าเรียบร้อย", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), Summary.class));
                 }
                 else{
-                    Toast.makeText(Product3Activity.this, "ไม่สามารถซื้อสินค้าได้ โปรดตรวจสอบยอดเงินอีกครั้ง", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Product4Activity.this, "ไม่สามารถซื้อสินค้าได้ โปรดตรวจสอบยอดเงินอีกครั้ง", Toast.LENGTH_SHORT).show();
                 }
             }
         }
-
         );
+
     }
 
     public boolean checkMoney(int productCost) {
@@ -121,9 +116,9 @@ public class Product3Activity extends AppCompatActivity {
     public void createProduct(){
         DocumentReference documentReference = fStore.collection("products").document();
         Map<String,Object> product = new HashMap<>();
-        product.put("name", getString(R.string.product3Name));
-        product.put("price", 50);
-        product.put("detail", getString(R.string.product3Description));
+        product.put("name", getString(R.string.product4Name));
+        product.put("price", 100);
+        product.put("detail", getString(R.string.product4Description));
         productCode = getRandomString();
         product.put("code", productCode);
 
@@ -145,7 +140,7 @@ public class Product3Activity extends AppCompatActivity {
         Map<String,Object> userProduct = new HashMap<>();
         userProduct.put("userEmail", userEmail);
         userProduct.put("productCode", productCode);
-        userProduct.put("productName", getString(R.string.product3Name));
+        userProduct.put("productName", getString(R.string.product4Name));
         userProduct.put("productTime", formattedDate);
 
         documentReference_user.set(userProduct).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -180,7 +175,7 @@ public class Product3Activity extends AppCompatActivity {
                         }
                     });
                 }else {
-                    Toast.makeText(Product3Activity.this, "Failed!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Product4Activity.this, "Failed!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -197,6 +192,4 @@ public class Product3Activity extends AppCompatActivity {
         String saltStr = salt.toString();
         return saltStr;
     }
-
-
 }

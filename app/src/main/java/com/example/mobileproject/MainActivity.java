@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         modelList.add(new Model(getString(R.string.product1Name), getString(R.string.product1Description), R.drawable.roblox10giftcard ));
         modelList.add(new Model(getString(R.string.product2Name), getString(R.string.product2Description), R.drawable.roblox25giftcard));
         modelList.add(new Model(getString(R.string.product3Name), getString(R.string.product3Description), R.drawable.roblox50giftcard));
+        modelList.add(new Model(getString(R.string.product4Name), getString(R.string.product4Description), R.drawable.roblox100giftcard));
+        modelList.add(new Model(getString(R.string.product5Name), getString(R.string.product5Description), R.drawable.korblox));
+        modelList.add(new Model(getString(R.string.product6Name), getString(R.string.product6Description), R.drawable.bacon));
 
         // recyclerview
         recyclerView = findViewById(R.id.recyclerViewHistory);

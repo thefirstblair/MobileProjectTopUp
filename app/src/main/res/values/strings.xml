@@ -9,13 +9,22 @@
 
     <string name="product3Description">$50.00 Roblox Gift Card - 4500 Robux</string>
 
+    <string name="product4Description">$100.00 Roblox Gift Card - 10000 Robux</string>
+
+    <string name="product5Description">Limited Edition Korblox Deathspeaker Gift Card - His tribe is widely considered the best and strongest of the twelve Korblox tribes.</string>
+
+    <string name="product6Description">Bacon Hair in Roblox Game - A hair accessory that was published in the avatar shop by Roblox on July 17, 2012. Since June 24, 2014</string>
 
     <string name="product1Name">$10.00 Roblox Gift Card</string>
 
-
     <string name="product2Name">$25.00 Roblox Gift Card</string>
 
-
     <string name="product3Name">$50.00 Roblox Gift Card</string>
+
+    <string name="product4Name">$100.00 Roblox Gift Card</string>
+
+    <string name="product5Name">Korblox Item Gift Card</string>
+
+    <string name="product6Name">Bacon Hair Item Code</string>
 
 </resources>
