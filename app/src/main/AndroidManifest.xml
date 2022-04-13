@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileProject">
         <activity
+            android:name=".Product7Activity"
+            android:exported="false" />
+        <activity
             android:name=".Product6Activity"
             android:exported="false" />
         <activity
